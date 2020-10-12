@@ -15,6 +15,10 @@ while(confirmLength <= 7 || confirmLength >= 129) {
   var confirmLength = prompt("How many charactgers would you like your password to contain?");
 }
 
+var confirmSpecialCharacter = prompt("would you like to include special characters in your password?");
+
+
+
 
 function writePassword() {
   var password = generatePassword();
