@@ -19,6 +19,16 @@ var confirmSpecialCharacter = confirm("Would you like to include special charact
 
 var confirmNumbers = confirm("Would you like to include numbers in your password?");
 
+var confirmLowerCase = confirm("Would you like to include lowercase characters in your password?");
+
+var confirmUpperCase = confirm("Would you like to include uppercase charactgers in your password?");
+
+if (confirmLowerCase === true|| confirmUpperCase === true) {
+} else {
+    alert("Please choose uppercase characters, lowercase characters or both.");
+  }
+
+
 
 function writePassword() {
   var password = generatePassword();
