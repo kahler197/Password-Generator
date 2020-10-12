@@ -2,7 +2,7 @@ var generateBtn = document.querySelector("#generate");
 
 var confirmLength
 var confirmSpecialCharacter
-var confirmNumber
+var confirmNumbers
 var confirmUpperCase
 var confirmLowerCase
 
@@ -15,9 +15,9 @@ while(confirmLength <= 7 || confirmLength >= 129) {
   var confirmLength = prompt("How many charactgers would you like your password to contain?");
 }
 
-var confirmSpecialCharacter = prompt("would you like to include special characters in your password?");
+var confirmSpecialCharacter = confirm("Would you like to include special characters in your password?");
 
-
+var confirmNumbers = confirm("Would you like to include numbers in your password?");
 
 
 function writePassword() {
