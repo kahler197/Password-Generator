@@ -55,14 +55,12 @@ function generatePassword() {
 
   if (confirmSpecialCharacter && confirmNumbers && confirmLower && confirmUpper) {
     userInput = specialCharacter.concat("numbers, lowerCase, upperCase");
-    console.log(userInput)
   }
 
   // three values are clicked
 
   else if (confirmSpecialCharacter && confirmNumbers && confirmLower) {
     userInput = specialCharacter.concat("numbers, lowerCase");
-    console.log(userInput)
   }
 
   else if (confirmSpecialCharacter && confirmNumbers && confirmUpper) {
@@ -101,24 +99,27 @@ function generatePassword() {
 
   else if (confirmLower && confirmUpper) {
     userInput = lowerCase.concat(upperCase);
-  };
-
-  var passwordBlank = [];
-  
-  // Loop for random selection
-  for (var i = 0; i < confirmLength; i++) {
-    var allUserInput = userInput[Math.floor(Math.random() * userInput.length)];
-    passwordBlank.push(allUserInput);
-    console.log(allUserInput);
   }
 
-  // Join and return the password 
-  var password = passwordBlank.join("");
-  console.log("Your Pasword is: " + password);
-  return password;
-  
-}
+  // one value clicked
 
+  else if (confirmLower) {
+    userInput = lowerCase
+  }
+
+  else if (confirmUpper) {
+    userInput = upperCase
+  }
+
+  else if (confirmNumbers) {
+    userInput = numbers
+  }
+
+  else if (confirmSpecialCharacter) {
+    userInput = specialCharacter
+  };
+
+}
 
 
 
