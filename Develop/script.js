@@ -1,4 +1,8 @@
+// Password Generator
+
 var generateBtn = document.querySelector("#generate");
+
+// Varibles 
 
 var confirmLength;
 var confirmSpecialCharacter;
@@ -7,10 +11,14 @@ var confirmUpper;
 var confirmLower;
 var userInput;
 
+// Array Values
+
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "W", "Z"];
 var specialCharacter = ["!", "?", "#", "$", "%", "^", "*", "-", "_", "+"];
+
+// Start Password Function
 
 function writePassword() {
   var password = generatePassword();
@@ -21,11 +29,13 @@ function writePassword() {
 
 generateBtn.addEventListener("click", writePassword);
 
+// Generate prompts off btn click
+
 function generatePassword() {
 
-  confirmLength = prompt("how many characters would you like your password to contain?"); {
+  confirmLength = prompt("How many characters would you like your password to contain? Please choose a password value between 8 and 128 characters."); {
 
-    if (!confirmLength) {
+    if (confirmLength === true) {
         alert("Please enter a value.");
     }
 
@@ -51,31 +61,31 @@ function generatePassword() {
     }
   }    
 
-  // all four values are clicked 
+  // four values 
 
   if (confirmSpecialCharacter && confirmNumbers && confirmLower && confirmUpper) {
-    userInput = specialCharacter.concat("numbers, lowerCase, upperCase");
+    userInput = specialCharacter.concat(numbers, lowerCase, upperCase);
   }
 
-  // three values are clicked
+  // three values 
 
   else if (confirmSpecialCharacter && confirmNumbers && confirmLower) {
-    userInput = specialCharacter.concat("numbers, lowerCase");
+    userInput = specialCharacter.concat(numbers, lowerCase);
   }
 
   else if (confirmSpecialCharacter && confirmNumbers && confirmUpper) {
-    userInput = specialCharacter.concat("numbers, upperCase")
+    userInput = specialCharacter.concat(numbers, upperCase)
   }
 
   else if (confirmSpecialCharacter && confirmLower && confirmUpper) {
-    userInput = specialCharacter.concat("lowerCase, upperCase")
+    userInput = specialCharacter.concat(lowerCase, upperCase)
   }
 
   else if (confirmNumbers && confirmLower && confirmUpperCase) {
-    userInput = numbers.concat("lowerCase, upperCase")
+    userInput = numbers.concat(lowerCase, upperCase)
   }
 
-  // two values clicked
+  // two values 
   
   else if (confirmNumbers && confirmSpecialCharacter) {
     userInput = numbers.concat(specialCharacter);
@@ -101,7 +111,7 @@ function generatePassword() {
     userInput = lowerCase.concat(upperCase);
   }
 
-  // one value clicked
+  // one value
 
   else if (confirmLower) {
     userInput = lowerCase
@@ -119,6 +129,16 @@ function generatePassword() {
     userInput = specialCharacter
   };
 
+  var passwordBlank = [];
+  
+  for (var i = 0; i < confirmLength; i++) {
+    var allUserInput = userInput[Math.floor(Math.random() * userInput.length)];
+    passwordBlank.push(allUserInput);
+  }
+  
+  var password = passwordBlank.join("");
+  return password;
+  
 }
 
 
