@@ -7,10 +7,10 @@ var confirmUpperCase;
 var confirmLowerCase;
 var choice;
 
-number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "W", "Z"];
-confirmSpecialCharacter = ["!", "?", "#", "$", "%", "^", "*", "-", "_", "+"];
+upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "W", "Z"];
+specialCharacter = ["!", "?", "#", "$", "%", "^", "*", "-", "_", "+"];
 
 function writePassword() {
   var password = generatePassword();
@@ -52,12 +52,29 @@ function generatePassword() {
     }
   }    
 
-  // all four value are clicked 
+  // all four values are clicked 
 
   if (confirmSpecialCharacter && confirmNumbers && confirmLowerCase && confirmUpperCase) {
-    choice = number.concat("specialCharacter, lowerCase, upperCase");
+    choice = specialCharacter.concat("numbers, lowerCase, upperCase");
   }
 
+  // three values are clicked
+
+  else if (confirmSpecialCharacter && confirmNumbers && confirmLowerCase) {
+    choice = specialCharacter.concat("numbers, lowerCase");
+  }
+
+  else if (confirmSpecialCharacter && confirmNumbers && confirmUpperCase) {
+    choice = specialCharacter.concat("numbers, upperCase")
+  }
+
+  else if (confirmSpecialCharacter && confirmLowerCase && confirmUpperCase) {
+    choice = specialCharacter.concat("lowerCase, upperCase")
+  }
+
+  else if (confirmNumbers && confirmLowerCase && confirmUpperCase) {
+    choice = numbers.concat("lowerCase, upperCase")
+  }
 
 
 
