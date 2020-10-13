@@ -4,4 +4,4 @@
 
 <p>The goal of this project was to create a random password generator based of off user input.</p>
 
-![Alt text](Password-Generator/Develop/Images/passwordgenerated.png)
+![Password Generated](./Password-Generator/Develop/Images/passwordgenerated.png)
