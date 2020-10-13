@@ -2,22 +2,21 @@ var generateBtn = document.querySelector("#generate");
 
 var confirmLength;
 var confirmSpecialCharacter;
-var confirmNumbers;
-var confirmUpperCase;
-var confirmLowerCase;
-var choice;
+var confirmNumber;
+var confirmUpper;
+var confirmLower;
+var userInput;
 
-numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "W", "Z"];
-specialCharacter = ["!", "?", "#", "$", "%", "^", "*", "-", "_", "+"];
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "W", "Z"];
+var specialCharacter = ["!", "?", "#", "$", "%", "^", "*", "-", "_", "+"];
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 generateBtn.addEventListener("click", writePassword);
@@ -27,12 +26,12 @@ function generatePassword() {
   confirmLength = prompt("how many characters would you like your password to contain?"); {
 
     if (!confirmLength) {
-        alert("Value Required");
+        alert("Please enter a value.");
     }
 
   else if (confirmLength <= 7 || confirmLength >= 129) { 
           alert("Password length must be between 8 and 128 characters. Please try again.");
-           confirmLength = prompt("How many charactgers would you like your password to contain?");
+           confirmLength = prompt("How many characters would you like your password to contain?");
   }
 
   else {
@@ -41,12 +40,12 @@ function generatePassword() {
     
     confirmNumbers = confirm("Would you like to include numbers in your password?");
 
-    confirmLowerCase = confirm("Would you like to include lowercase characters in your password?");
+    confirmLower = confirm("Would you like to include lowercase characters in your password?");
 
-    confirmUpperCase = confirm("Would you like to include uppercase charactgers in your password?");
+    confirmUpper = confirm("Would you like to include uppercase characters in your password?");
   };
 
-  if (confirmLowerCase === true || confirmUpperCase === true || confirmNumbers === true || confirmSpecialCharacter === true) {
+  if (confirmLower === true || confirmUpper === true || confirmNumber === true || confirmSpecialCharacter === true) {
   } else {
       alert("Please choose your password values.");
     }
@@ -54,32 +53,77 @@ function generatePassword() {
 
   // all four values are clicked 
 
-  if (confirmSpecialCharacter && confirmNumbers && confirmLowerCase && confirmUpperCase) {
-    choice = specialCharacter.concat("numbers, lowerCase, upperCase");
+  if (confirmSpecialCharacter && confirmNumbers && confirmLower && confirmUpper) {
+    userInput = specialCharacter.concat("numbers, lowerCase, upperCase");
+    console.log(userInput)
   }
 
   // three values are clicked
 
-  else if (confirmSpecialCharacter && confirmNumbers && confirmLowerCase) {
-    choice = specialCharacter.concat("numbers, lowerCase");
+  else if (confirmSpecialCharacter && confirmNumbers && confirmLower) {
+    userInput = specialCharacter.concat("numbers, lowerCase");
+    console.log(userInput)
   }
 
-  else if (confirmSpecialCharacter && confirmNumbers && confirmUpperCase) {
-    choice = specialCharacter.concat("numbers, upperCase")
+  else if (confirmSpecialCharacter && confirmNumbers && confirmUpper) {
+    userInput = specialCharacter.concat("numbers, upperCase")
   }
 
-  else if (confirmSpecialCharacter && confirmLowerCase && confirmUpperCase) {
-    choice = specialCharacter.concat("lowerCase, upperCase")
+  else if (confirmSpecialCharacter && confirmLower && confirmUpper) {
+    userInput = specialCharacter.concat("lowerCase, upperCase")
   }
 
-  else if (confirmNumbers && confirmLowerCase && confirmUpperCase) {
-    choice = numbers.concat("lowerCase, upperCase")
+  else if (confirmNumbers && confirmLower && confirmUpperCase) {
+    userInput = numbers.concat("lowerCase, upperCase")
   }
 
+  // two values clicked
+  
+  else if (confirmNumbers && confirmSpecialCharacter) {
+    userInput = numbers.concat(specialCharacter);
+  }
 
+  else if (confirmNumbers && confirmLower) {
+    userInput = numbers.concat(lowerCase);
+  }
 
+  else if (confirmNumbers && confirmUpper) {
+    userInput = numbers.concat(upperCase);
+  }
 
+  else if (confirmSpecialCharacter && confirmLower) {
+    userInput = specialCharacter.concat(lowerCase);
+  }
 
+  else if (confirmSpecialCharacter && confirmUpper) {
+    userInput = specialCharacter.concat(upperCase);
+  }
 
+  else if (confirmLower && confirmUpper) {
+    userInput = lowerCase.concat(upperCase);
+  };
 
+  var passwordBlank = [];
+  
+  // Loop for random selection
+  for (var i = 0; i < confirmLength; i++) {
+    var allUserInput = userInput[Math.floor(Math.random() * userInput.length)];
+    passwordBlank.push(allUserInput);
+    console.log(allUserInput);
+  }
+
+  // Join and return the password 
+  var password = passwordBlank.join("");
+  console.log("Your Pasword is: " + password);
+  return password;
+  
 }
+
+
+
+
+
+
+
+
+
